@@ -1,0 +1,16 @@
+Global CO2 Emissions from Fossil Fuels
+
+https://my.api.mockaroo.com/co2.json?key=8eb9e6f0
+
+Global Temperature
+
+https://my.api.mockaroo.com/temp.json?key=8eb9e6f0
+
+Glacier size
+
+https://my.api.mockaroo.com/glaciersize.json?key=8eb9e6f0
+
+Sea Level
+
+https://my.api.mockaroo.com/sealevel.json?key=8eb9e6f0
+

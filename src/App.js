@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route, Link } from "react-router-dom";
+import DataPage from "./DataPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* hitta ett sätt att rendera olika props till samma komponent
+      beroende på vilken länk som klickas i menyn 
+      ***
+      Skicka med alla data och sen i data komponenten
+      välja vilken beroende på menyval*/}
+
+      <Link to="/datapage/temp" key="temp">
+        temp{" "}
+      </Link>
+      <Link to="/datapage/glaciersize" key="glacier">
+        glacier{" "}
+      </Link>
+      <Link to="/datapage/sealevel" key="sea">
+        sea{" "}
+      </Link>
+      <Link to="/datapage/co2" key="co2">
+        co2{" "}
+      </Link>
+
+      <Routes>
+        <Route path="/datapage/:dataName" element={<DataPage />}></Route>
+      </Routes>
     </div>
   );
 }
