@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import RechartLineChart from "./RechartLineChart";
 
 const DataPage = (props) => {
   const { dataName } = useParams();
@@ -16,6 +17,20 @@ const DataPage = (props) => {
   let glaciersize = "https://my.api.mockaroo.com/glaciersize.json?key=8eb9e6f0";
   let sealevel = "https://my.api.mockaroo.com/sealevel.json?key=8eb9e6f0";
   let co2 = "https://my.api.mockaroo.com/co2.json?key=8eb9e6f0";
+
+  useEffect(() => {
+    if (dataName === "temp") {
+      document.title = "Global Temperatur";
+    } else if (dataName === "glaciersize") {
+      document.title = "Glacier Size";
+    } else if (dataName === "sealevel") {
+      document.title = "Sea Level";
+    } else if (dataName === "co2") {
+      document.title = "Co2 Emissions";
+    } else {
+      document.title = "Climate App";
+    }
+  });
 
   useEffect(() => {
     const requestOne = axios.get(temp);
@@ -49,21 +64,18 @@ const DataPage = (props) => {
 
   return (
     <>
+      <div>Data: {dataName}</div>
       {(() => {
         if (dataName === "temp") {
           return (
             <div>
-              {tempData.map((data) => {
-                return <p>{data.Year}</p>;
-              })}
+              <RechartLineChart data={tempData} />
             </div>
           );
         } else if (dataName === "glaciersize") {
           return (
             <div>
-              {glaciersizeData.map((data) => {
-                return <p>{data.Year}</p>;
-              })}
+              <RechartLineChart data={glaciersizeData} />
             </div>
           );
         } else if (dataName === "sealevel") {
@@ -86,11 +98,6 @@ const DataPage = (props) => {
           return <div>catch all</div>;
         }
       })()}
-
-      <div>Username: {dataName}</div>
-      {tempData.map((data) => {
-        return <div>{data.Year}</div>;
-      })}
     </>
   );
 };
