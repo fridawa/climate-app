@@ -7,14 +7,25 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
-
 const RechartLineChart = (props) => {
   const fetchedData = props.data;
 
   //Gets the third object in every API for the chart
-  const thirdObject = Object.keys(fetchedData[0])[2];
+  let thirdObject = {};
+  if (fetchedData[0] == null) {
+    console.error("err");
+  } else {
+    thirdObject = Object.keys(fetchedData[0])[2];
+    console.log(thirdObject);
+  }
   console.log(thirdObject);
-
+  const third = new Object();
+  third.make = thirdObject;
+  console.log(third.make);
+  const test = JSON.stringify(third.make);
+  console.log(test);
+  const withoutFirstAndLast = test.slice(1, -1);
+  console.log(withoutFirstAndLast);
   return (
     <>
       <LineChart
@@ -28,7 +39,7 @@ const RechartLineChart = (props) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey={thirdObject} stroke="#8884d8" />
+        <Line type="monotone" dataKey={withoutFirstAndLast} stroke="#8884d8" />
       </LineChart>
     </>
   );
