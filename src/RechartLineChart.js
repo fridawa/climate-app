@@ -11,20 +11,9 @@ import {
 const RechartLineChart = (props) => {
   const fetchedData = props.data;
 
-  // This logic worked but then gave message:
-  // "Uncaught TypeError: Cannot convert undefined or null to object"
-  // so just need to work around that so I can put the key (ar) in <Line></Line>
-
-  //   console.log(Object.keys(fetchedData[0]));
-  //   const keyyy = undefined;
-  //   if (keyyy === null) {
-  //     const keyyy = Object.keys(fetchedData[0]);
-  //     console.log(keyyy);
-  //   } else {
-  //     console.log("falsy");
-  //   }
-  //     const ar = keyyy[3];
-  //     console.log(ar);
+  //Gets the third object in every API for the chart
+  const thirdObject = Object.keys(fetchedData[0])[2];
+  console.log(thirdObject);
 
   return (
     <>
@@ -39,7 +28,7 @@ const RechartLineChart = (props) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="Year" stroke="#8884d8" />
+        <Line type="monotone" dataKey={thirdObject} stroke="#8884d8" />
       </LineChart>
     </>
   );

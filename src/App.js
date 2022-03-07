@@ -1,6 +1,7 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import DataPage from "./DataPage";
+import Home from "./Home";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
       ***
       Skicka med alla data och sen i data komponenten
       välja vilken beroende på menyval*/}
-
+      <Link to="/" key="temp">
+        home{" "}
+      </Link>
       <Link to="/datapage/temp" key="temp">
         temp{" "}
       </Link>
@@ -25,7 +28,8 @@ function App() {
       </Link>
 
       <Routes>
-        <Route path="/datapage/:dataName" element={<DataPage />}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/datapage/:dataName" element={<DataPage />}></Route>{" "}
       </Routes>
     </div>
   );

@@ -64,23 +64,26 @@ const DataPage = (props) => {
 
   return (
     <>
-      <div>Data: {dataName}</div>
       {(() => {
         if (dataName === "temp") {
           return (
             <div>
+              <h1>Global Temperature</h1>
               <RechartLineChart data={tempData} />
             </div>
           );
         } else if (dataName === "glaciersize") {
           return (
             <div>
+              <h1>Glacier Size</h1>
               <RechartLineChart data={glaciersizeData} />
             </div>
           );
         } else if (dataName === "sealevel") {
           return (
             <div>
+              <h1>Sea Level</h1>
+
               {sealevelData.map((data) => {
                 return <p>{data.Time}</p>;
               })}
@@ -89,6 +92,8 @@ const DataPage = (props) => {
         } else if (dataName === "co2") {
           return (
             <div>
+              <h1>Co2 Emissions</h1>
+
               {co2Data.map((data) => {
                 return <p>{data.Year}</p>;
               })}
